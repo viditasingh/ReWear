@@ -198,9 +198,9 @@ const ItemCard = ({ item, showActions = true, compact = false }) => {
             )}
 
             {/* Tags */}
-            {item.tags && item.tags.length > 0 && (
+            {item.tags_list && item.tags_list.length > 0 && (
               <div className="flex flex-wrap gap-1 mb-3">
-                {item.tags.slice(0, 3).map((tag, index) => (
+                {item.tags_list.slice(0, 3).map((tag, index) => (
                   <span
                     key={index}
                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
@@ -208,9 +208,9 @@ const ItemCard = ({ item, showActions = true, compact = false }) => {
                     {tag}
                   </span>
                 ))}
-                {item.tags.length > 3 && (
+                {item.tags_list.length > 3 && (
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                    +{item.tags.length - 3}
+                    +{item.tags_list.length - 3}
                   </span>
                 )}
               </div>

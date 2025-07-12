@@ -209,11 +209,11 @@ const ItemDetail = () => {
             </div>
 
             {/* Tags */}
-            {item.tags && item.tags.length > 0 && (
+            {item.tags_list && item.tags_list.length > 0 && (
               <div className="mb-6">
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Tags</h3>
                 <div className="flex flex-wrap gap-2">
-                  {item.tags.map((tag, index) => (
+                  {item.tags_list.map((tag, index) => (
                     <span
                       key={index}
                       className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"

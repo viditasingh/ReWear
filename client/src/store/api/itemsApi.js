@@ -12,6 +12,13 @@ export const itemsApi = baseApi.injectEndpoints({
         });
         return `/items/?${searchParams.toString()}`;
       },
+      transformResponse: (response) => ({
+        items: response.results || [],
+        total: response.count || 0,
+        totalPages: response.next || response.previous ? Math.ceil(response.count / (response.results?.length || 1)) : 1,
+        next: response.next,
+        previous: response.previous
+      }),
       providesTags: ['Item'],
     }),
     getItem: builder.query({
@@ -43,14 +50,23 @@ export const itemsApi = baseApi.injectEndpoints({
     }),
     getFeaturedItems: builder.query({
       query: () => '/items/featured/',
+      transformResponse: (response) => response.results || [],
       providesTags: ['Item'],
     }),
     getMyItems: builder.query({
       query: () => '/items/my-items/',
+      transformResponse: (response) => ({
+        items: response.results || [],
+        total: response.count || 0,
+        totalPages: response.next || response.previous ? Math.ceil(response.count / (response.results?.length || 1)) : 1,
+        next: response.next,
+        previous: response.previous
+      }),
       providesTags: ['Item'],
     }),
     getCategories: builder.query({
       query: () => '/categories/',
+      transformResponse: (response) => response.results || [],
     }),
     uploadImages: builder.mutation({
       query: (formData) => ({
@@ -61,10 +77,24 @@ export const itemsApi = baseApi.injectEndpoints({
     }),
     searchItems: builder.query({
       query: (searchTerm) => `/search/?q=${encodeURIComponent(searchTerm)}`,
+      transformResponse: (response) => ({
+        items: response.results || [],
+        total: response.count || 0,
+        totalPages: response.next || response.previous ? Math.ceil(response.count / (response.results?.length || 1)) : 1,
+        next: response.next,
+        previous: response.previous
+      }),
       providesTags: ['Item'],
     }),
     getItemsByCategory: builder.query({
       query: (category) => `/items/?category=${category}`,
+      transformResponse: (response) => ({
+        items: response.results || [],
+        total: response.count || 0,
+        totalPages: response.next || response.previous ? Math.ceil(response.count / (response.results?.length || 1)) : 1,
+        next: response.next,
+        previous: response.previous
+      }),
       providesTags: ['Item'],
     }),
     reportItem: builder.mutation({
@@ -76,6 +106,7 @@ export const itemsApi = baseApi.injectEndpoints({
     }),
     getSimilarItems: builder.query({
       query: (itemId) => `/items/${itemId}/similar/`,
+      transformResponse: (response) => response.results || [],
       providesTags: ['Item'],
     }),
   }),
