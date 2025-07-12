@@ -1,1 +1,204 @@
-@import 'tailwindcss'
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import 'tailwindcss';
+
+/* Global styles for modern aesthetic */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #ffffff;
+  color: #14213d;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e5e5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fca311;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e6930f;
+}
+
+/* Loading spinner animation */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #fca311 0%, #e6930f 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #14213d 0%, #0f1a2f 100%);
+}
+
+.gradient-soft {
+  background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(229, 229, 229, 0.3);
+}
+
+.glass-dark {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(20, 33, 61, 0.75);
+  border: 1px solid rgba(229, 229, 229, 0.125);
+}
+
+/* Modern button styles */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* Modern card styles */
+.card-modern {
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(20, 33, 61, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 33, 61, 0.08);
+}
+
+/* Focus styles */
+.focus-modern:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fca311, 0 0 0 4px rgba(252, 163, 17, 0.1);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #fca311 0%, #14213d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Modern input styles */
+.input-modern {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(20, 33, 61, 0.05);
+  color: #14213d;
+  transition: all 0.2s ease;
+}
+
+.input-modern::placeholder {
+  color: #a3a3a3;
+}
+
+.input-modern:hover {
+  border-color: #fbd3a1;
+}
+
+.input-modern:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #fca311;
+}
+
+/* Modern transitions */
+.transition-modern {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Selection styles */
+::selection {
+  background-color: #fca311;
+  color: #ffffff;
+}
+
+/* Hide default focus outline and add custom */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Modern link styles */
+.link-modern {
+  color: #fca311;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.link-modern:hover {
+  color: #e6930f;
+}
+
+.link-modern::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-modern:hover::after {
+  width: 100%;
+}
