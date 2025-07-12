@@ -58,6 +58,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # React dev server (Create React App)
     'http://localhost:5173',  # Vite dev server
+    'http://localhost:5174',  # Vite dev server (alternate port)
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -66,6 +67,7 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
+    'http://localhost:5174',
 ]
 
 # For API endpoints, we'll use token authentication without CSRF
