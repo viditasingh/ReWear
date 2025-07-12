@@ -10,17 +10,17 @@ export const itemsApi = baseApi.injectEndpoints({
             searchParams.append(key, value);
           }
         });
-        return `/items?${searchParams.toString()}`;
+        return `/items/?${searchParams.toString()}`;
       },
       providesTags: ['Item'],
     }),
     getItem: builder.query({
-      query: (id) => `/items/${id}`,
+      query: (id) => `/items/${id}/`,
       providesTags: (result, error, id) => [{ type: 'Item', id }],
     }),
     createItem: builder.mutation({
       query: (itemData) => ({
-        url: '/items',
+        url: '/items/create/',
         method: 'POST',
         body: itemData,
       }),
@@ -28,7 +28,7 @@ export const itemsApi = baseApi.injectEndpoints({
     }),
     updateItem: builder.mutation({
       query: ({ id, ...patch }) => ({
-        url: `/items/${id}`,
+        url: `/items/${id}/update/`,
         method: 'PUT',
         body: patch,
       }),
@@ -36,46 +36,46 @@ export const itemsApi = baseApi.injectEndpoints({
     }),
     deleteItem: builder.mutation({
       query: (id) => ({
-        url: `/items/${id}`,
+        url: `/items/${id}/`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Item'],
     }),
     getFeaturedItems: builder.query({
-      query: () => '/items/featured',
+      query: () => '/items/featured/',
       providesTags: ['Item'],
     }),
     getMyItems: builder.query({
-      query: () => '/items/my',
+      query: () => '/items/my-items/',
       providesTags: ['Item'],
     }),
     getCategories: builder.query({
-      query: () => '/items/categories',
+      query: () => '/categories/',
     }),
     uploadImages: builder.mutation({
       query: (formData) => ({
-        url: '/items/upload-images',
+        url: '/items/upload-images/',
         method: 'POST',
         body: formData,
       }),
     }),
     searchItems: builder.query({
-      query: (searchTerm) => `/items/search?q=${encodeURIComponent(searchTerm)}`,
+      query: (searchTerm) => `/search/?q=${encodeURIComponent(searchTerm)}`,
       providesTags: ['Item'],
     }),
     getItemsByCategory: builder.query({
-      query: (category) => `/items/category/${category}`,
+      query: (category) => `/items/?category=${category}`,
       providesTags: ['Item'],
     }),
     reportItem: builder.mutation({
       query: ({ itemId, reason }) => ({
-        url: `/items/${itemId}/report`,
+        url: `/items/${itemId}/report/`,
         method: 'POST',
         body: { reason },
       }),
     }),
     getSimilarItems: builder.query({
-      query: (itemId) => `/items/${itemId}/similar`,
+      query: (itemId) => `/items/${itemId}/similar/`,
       providesTags: ['Item'],
     }),
   }),

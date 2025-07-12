@@ -3,12 +3,12 @@ import { baseApi } from './baseApi';
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProfile: builder.query({
-      query: () => '/user/profile',
+      query: () => '/profile/',
       providesTags: ['User'],
     }),
     updateProfile: builder.mutation({
       query: (profileData) => ({
-        url: '/user/profile',
+        url: '/profile/',
         method: 'PUT',
         body: profileData,
       }),
@@ -16,34 +16,34 @@ export const userApi = baseApi.injectEndpoints({
     }),
     changePassword: builder.mutation({
       query: ({ currentPassword, newPassword }) => ({
-        url: '/user/change-password',
+        url: '/auth/change-password/',
         method: 'POST',
         body: { currentPassword, newPassword },
       }),
     }),
     getPoints: builder.query({
-      query: () => '/user/points',
+      query: () => '/points/transactions/',
       providesTags: ['User'],
     }),
     getPointsHistory: builder.query({
-      query: () => '/user/points/history',
+      query: () => '/points/transactions/',
       providesTags: ['User'],
     }),
     uploadAvatar: builder.mutation({
       query: (formData) => ({
-        url: '/user/avatar',
+        url: '/profile/avatar/',
         method: 'POST',
         body: formData,
       }),
       invalidatesTags: ['User'],
     }),
     getPreferences: builder.query({
-      query: () => '/user/preferences',
+      query: () => '/profile/preferences/',
       providesTags: ['User'],
     }),
     updatePreferences: builder.mutation({
       query: (preferences) => ({
-        url: '/user/preferences',
+        url: '/profile/preferences/',
         method: 'PUT',
         body: preferences,
       }),
@@ -51,25 +51,25 @@ export const userApi = baseApi.injectEndpoints({
     }),
     deleteAccount: builder.mutation({
       query: () => ({
-        url: '/user/account',
+        url: '/profile/delete/',
         method: 'DELETE',
       }),
       invalidatesTags: ['User'],
     }),
     getNotifications: builder.query({
-      query: () => '/user/notifications',
+      query: () => '/notifications/',
       providesTags: ['User'],
     }),
     markNotificationAsRead: builder.mutation({
       query: (notificationId) => ({
-        url: `/user/notifications/${notificationId}/read`,
+        url: `/notifications/${notificationId}/read/`,
         method: 'POST',
       }),
       invalidatesTags: ['User'],
     }),
     markAllNotificationsAsRead: builder.mutation({
       query: () => ({
-        url: '/user/notifications/read-all',
+        url: '/notifications/read-all/',
         method: 'POST',
       }),
       invalidatesTags: ['User'],
