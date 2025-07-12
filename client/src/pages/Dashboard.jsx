@@ -12,8 +12,8 @@ import {
   X,
   Eye
 } from 'lucide-react';
+import { useGetMyItemsQuery } from '../store/api/itemsApi';
 import { 
-  useGetMyItemsQuery, 
   useGetPointsQuery,
   useGetNotificationsQuery 
 } from '../store/api/userApi';

@@ -74,6 +74,10 @@ export const itemsApi = baseApi.injectEndpoints({
         body: { reason },
       }),
     }),
+    getSimilarItems: builder.query({
+      query: (itemId) => `/items/${itemId}/similar`,
+      providesTags: ['Item'],
+    }),
   }),
 });
 
@@ -90,4 +94,5 @@ export const {
   useSearchItemsQuery,
   useGetItemsByCategoryQuery,
   useReportItemMutation,
+  useGetSimilarItemsQuery,
 } = itemsApi;
